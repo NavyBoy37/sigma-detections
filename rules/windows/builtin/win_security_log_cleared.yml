@@ -1,0 +1,22 @@
+title: Windows Security Event Log Cleared
+id: fd3eaeba-af71-4e55-bf11-cfe9f8c1c174
+status: test
+description: |
+  Event 1102 fires when the Security log is cleared. Attackers clear it to erase
+  evidence of logons and privilege use after they're done on a host. Legitimate
+  clears are rare and should line up with a change ticket.
+author: NavyBoy37
+date: 2026-11-06
+tags:
+  - attack.defense-evasion
+  - attack.t1070.001
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 1102
+  condition: selection
+falsepositives:
+  - Planned log maintenance or a golden image being reset before deployment
+level: high

@@ -1,0 +1,31 @@
+title: Run Key Autostart Pointing at a User-Writable Folder
+id: 8ff6d236-6dd3-4e60-81e1-4225f9711123
+status: test
+description: |
+  Sysmon Event 13 for a value written under a Run or RunOnce key whose target
+  lives in AppData, Temp or Users\Public. The program starts every time the user
+  logs on.
+author: NavyBoy37
+date: 2026-11-06
+tags:
+  - attack.persistence
+  - attack.t1547.001
+logsource:
+  product: windows
+  category: registry_set
+detection:
+  selection_key:
+    TargetObject|contains:
+      - \Software\Microsoft\Windows\CurrentVersion\Run\
+      - \Software\Microsoft\Windows\CurrentVersion\RunOnce\
+  selection_target:
+    Details|contains:
+      - \AppData\
+      - \Temp\
+      - \Users\Public\
+  filter_onedrive:
+    Details|contains: \AppData\Local\Microsoft\OneDrive\OneDrive.exe
+  condition: selection_key and selection_target and not filter_onedrive
+falsepositives:
+  - Apps that install per-user (Discord, Spotify, Teams classic). Tune with filters.
+level: medium

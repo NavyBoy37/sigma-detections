@@ -1,0 +1,27 @@
+title: Account Added to Local Administrators or Remote Desktop Users
+id: 8329bfe3-0547-47f1-aad2-e514b658d3a0
+status: test
+description: |
+  Event 4732 (member added to a security-enabled local group) where the group
+  hands out admin rights or remote access. A common persistence step right after
+  an attacker creates a backup account.
+author: NavyBoy37
+date: 2026-11-06
+tags:
+  - attack.persistence
+  - attack.privilege-escalation
+  - attack.t1098.007
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4732
+    TargetUserName:
+      - Administrators
+      - Remote Desktop Users
+  condition: selection
+falsepositives:
+  - Help desk granting admin rights through an approved request
+  - Imaging and provisioning scripts
+level: medium

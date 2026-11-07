@@ -1,0 +1,61 @@
+{
+  "match": [
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\vssadmin.exe",
+      "CommandLine": "vssadmin.exe Delete Shadows /All /Quiet",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\wbem\\WMIC.exe",
+      "CommandLine": "wmic shadowcopy delete /nointeractive",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "CommandLine": "powershell -c \"Get-WmiObject Win32_ShadowCopy | ForEach-Object { $_.Delete() }\"",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    }
+  ],
+  "nomatch": [
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\vssadmin.exe",
+      "CommandLine": "vssadmin.exe list shadows",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\wbem\\WMIC.exe",
+      "CommandLine": "wmic shadowcopy list brief",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "match": [
+    {
+      "logsource": {
+        "product": "windows",
+        "service": "security"
+      },
+      "EventID": 4732,
+      "TargetUserName": "Administrators",
+      "MemberSid": "S-1-5-21-1-2-3-1105"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "service": "security"
+      },
+      "EventID": 4732,
+      "TargetUserName": "Remote Desktop Users",
+      "MemberSid": "S-1-5-21-1-2-3-1105"
+    }
+  ],
+  "nomatch": [
+    {
+      "logsource": {
+        "product": "windows",
+        "service": "security"
+      },
+      "EventID": 4732,
+      "TargetUserName": "Backup Operators Reviewers"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "service": "security"
+      },
+      "EventID": 4733,
+      "TargetUserName": "Administrators"
+    }
+  ]
+}

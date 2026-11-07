@@ -1,0 +1,72 @@
+{
+  "match": [
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "CommandLine": "powershell.exe -NoP -W Hidden -EncodedCommand SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkA",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "CommandLine": "powershell -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkA",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+      "CommandLine": "pwsh.exe -ec SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkA",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    }
+  ],
+  "nomatch": [
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "CommandLine": "powershell.exe -ExecutionPolicy Bypass -File C:\\scripts\\backup.ps1",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "CommandLine": "powershell.exe -Command Get-Service -Name Spooler",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Tools\\encoder.exe",
+      "CommandLine": "encoder.exe -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkA",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    }
+  ]
+}

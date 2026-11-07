@@ -1,0 +1,29 @@
+{
+  "match": [
+    {
+      "logsource": {
+        "product": "windows",
+        "service": "security"
+      },
+      "EventID": 1102,
+      "SubjectUserName": "Administrator"
+    }
+  ],
+  "nomatch": [
+    {
+      "logsource": {
+        "product": "windows",
+        "service": "security"
+      },
+      "EventID": 4624,
+      "TargetUserName": "Administrator"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "service": "system"
+      },
+      "EventID": 104
+    }
+  ]
+}

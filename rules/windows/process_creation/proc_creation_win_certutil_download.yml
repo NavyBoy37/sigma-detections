@@ -1,0 +1,31 @@
+title: Certutil Used to Download a File
+id: 67d4a0f6-ca3d-444e-b259-ee860975f729
+status: test
+description: |
+  certutil.exe is a signed Windows certificate tool that can also fetch files
+  from a URL. Attackers use it to pull down payloads without bringing their own
+  downloader ("living off the land").
+author: NavyBoy37
+date: 2026-11-06
+tags:
+  - attack.command-and-control
+  - attack.t1105
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_image:
+    - Image|endswith: \certutil.exe
+    - OriginalFileName: CertUtil.exe
+  selection_flags:
+    CommandLine|contains:
+      - urlcache
+      - verifyctl
+  selection_url:
+    CommandLine|contains:
+      - 'http://'
+      - 'https://'
+  condition: selection_image and selection_flags and selection_url
+falsepositives:
+  - Rare. Some admins test CRL distribution points with -urlcache.
+level: high

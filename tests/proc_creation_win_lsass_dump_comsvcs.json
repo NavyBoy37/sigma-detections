@@ -1,0 +1,50 @@
+{
+  "match": [
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\rundll32.exe",
+      "CommandLine": "rundll32.exe C:\\Windows\\System32\\comsvcs.dll, MiniDump 624 C:\\Temp\\out.dmp full",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\rundll32.exe",
+      "CommandLine": "rundll32.exe comsvcs.dll #24 624 C:\\Temp\\l.bin full",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    }
+  ],
+  "nomatch": [
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\rundll32.exe",
+      "CommandLine": "rundll32.exe shell32.dll,Control_RunDLL desk.cpl",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\rundll32.exe",
+      "CommandLine": "rundll32.exe comsvcs.dll,ShowStatus",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+title: Volume Shadow Copies Deleted
+id: 8c2eabe0-2eb0-420f-87eb-94d817421008
+status: test
+description: |
+  Ransomware deletes shadow copies right before it encrypts so the victim can't
+  roll files back. Catches the three usual ways: vssadmin, wmic and PowerShell's
+  Win32_ShadowCopy.
+author: NavyBoy37
+date: 2026-11-06
+tags:
+  - attack.impact
+  - attack.t1490
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_vssadmin:
+    Image|endswith: \vssadmin.exe
+    CommandLine|contains|all:
+      - delete
+      - shadows
+  selection_wmic:
+    Image|endswith: \wmic.exe
+    CommandLine|contains|all:
+      - shadowcopy
+      - delete
+  selection_powershell:
+    CommandLine|contains|all:
+      - Win32_ShadowCopy
+      - Delete
+  condition: 1 of selection_*
+falsepositives:
+  - Backup software rotating its own snapshots (check the parent process)
+level: critical

@@ -1,0 +1,33 @@
+{
+  "match": [
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "registry_set"
+      },
+      "EventID": 13,
+      "TargetObject": "HKU\\S-1-5-21-1-2-3-1001\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\WinUpdate",
+      "Details": "C:\\Users\\j.rivera\\AppData\\Roaming\\winupd.exe"
+    }
+  ],
+  "nomatch": [
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "registry_set"
+      },
+      "EventID": 13,
+      "TargetObject": "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\SecurityHealth",
+      "Details": "C:\\Windows\\System32\\SecurityHealthSystray.exe"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "registry_set"
+      },
+      "EventID": 13,
+      "TargetObject": "HKU\\S-1-5-21-1-2-3-1001\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\OneDrive",
+      "Details": "\"C:\\Users\\j.rivera\\AppData\\Local\\Microsoft\\OneDrive\\OneDrive.exe\" /background"
+    }
+  ]
+}

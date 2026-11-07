@@ -1,0 +1,29 @@
+title: LSASS Memory Dumped With comsvcs.dll MiniDump
+id: afb5d04d-b4b2-4605-9200-ac750f2478c9
+status: test
+description: |
+  rundll32 can call the MiniDump export in comsvcs.dll to write a memory dump of
+  any process. Pointed at lsass.exe it dumps cached credentials, the same result
+  as Mimikatz without dropping a tool. The export can also be called by its
+  ordinal (#24), so both forms are matched.
+author: NavyBoy37
+date: 2026-11-06
+tags:
+  - attack.credential-access
+  - attack.t1003.001
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_image:
+    Image|endswith: \rundll32.exe
+  selection_dll:
+    CommandLine|contains: comsvcs
+  selection_export:
+    CommandLine|contains:
+      - minidump
+      - '#24'
+  condition: all of selection_*
+falsepositives:
+  - None expected outside of authorized red team work
+level: critical

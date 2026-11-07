@@ -1,0 +1,33 @@
+title: Scheduled Task Created That Runs From a User-Writable Folder
+id: a078852b-954b-4229-b28c-1966ed1dc499
+status: test
+description: |
+  Legitimate software installs into Program Files. A scheduled task pointing at
+  AppData, Temp, ProgramData or C:\Users\Public is a classic way for malware to
+  survive a reboot under a normal user's rights.
+author: NavyBoy37
+date: 2026-11-06
+tags:
+  - attack.persistence
+  - attack.execution
+  - attack.t1053.005
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_create:
+    Image|endswith: \schtasks.exe
+    CommandLine|contains: /create
+  selection_path:
+    CommandLine|contains:
+      - \AppData\
+      - \Temp\
+      - \ProgramData\
+      - \Users\Public\
+  filter_updaters:
+    CommandLine|contains:
+      - \AppData\Local\Microsoft\OneDrive\
+  condition: selection_create and selection_path and not filter_updaters
+falsepositives:
+  - Per-user auto-updaters (browsers, chat apps). Add them to filter_updaters as they show up.
+level: medium

@@ -1,0 +1,61 @@
+{
+  "match": [
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\schtasks.exe",
+      "CommandLine": "schtasks /create /sc onlogon /tn \"Updater\" /tr C:\\Users\\j.rivera\\AppData\\Roaming\\upd.exe",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\schtasks.exe",
+      "CommandLine": "schtasks.exe /Create /SC MINUTE /MO 15 /TN sync /TR \"C:\\Users\\Public\\sync.bat\"",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    }
+  ],
+  "nomatch": [
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\schtasks.exe",
+      "CommandLine": "schtasks /create /tn Backup /tr \"C:\\Program Files\\Backup\\run.exe\" /sc daily",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\schtasks.exe",
+      "CommandLine": "schtasks /create /tn OneDriveUpdate /tr C:\\Users\\j.rivera\\AppData\\Local\\Microsoft\\OneDrive\\OneDriveStandaloneUpdater.exe",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    },
+    {
+      "logsource": {
+        "product": "windows",
+        "category": "process_creation"
+      },
+      "EventID": 1,
+      "Image": "C:\\Windows\\System32\\schtasks.exe",
+      "CommandLine": "schtasks /query /tn \\Temp\\Thing",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "CORP\\j.rivera"
+    }
+  ]
+}
